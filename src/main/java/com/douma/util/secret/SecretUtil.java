@@ -2,6 +2,10 @@ package com.douma.util.secret;
 
 import com.alibaba.druid.filter.config.ConfigTools;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 /**
  * Copyright (c) 2017. douma.cn, All Rights Reserved
  * Description: 加密方法
@@ -46,17 +50,29 @@ public class SecretUtil {
         return null;
     }
 
+    /**
+     * MD5 加密
+     *
+     * @param content
+     * @return
+     */
+    public static String md5(String content) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(content.getBytes());
+            String md5 = new BigInteger(1, md.digest()).toString(16);
+            return fillMD5(md5);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("MD5加密错误:" + e.getMessage(), e);
+        }
+    }
+
+    private static String fillMD5(String md5) {
+        return md5.length() == 32 ? md5 : fillMD5("0" + md5);
+    }
+
     public static void main(String[] args) throws Exception {
-        //密码明文，也就是数据库的密码
-        String content = "Haoxijun123";
-        System.out.println("原始：");
-        System.out.println(content);
-        System.out.println("加密：");
-        String jiami = encrypt(content);
-        System.out.println(jiami);
-        System.out.println("解密：");
-        String jiemi = decrypt(jiami);
-        System.out.println(jiemi);
+        System.out.println(encrypt("123456"));
     }
 
 }
