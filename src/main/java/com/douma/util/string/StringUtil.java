@@ -37,4 +37,30 @@ public class StringUtil {
         }
     }
 
+    /**
+     * 字符串拼接
+     *
+     * @param str
+     * @param params
+     * @return
+     */
+    public static String toString(String str, Object... params) {
+        if (isEmpty(str)) {
+            return null;
+        }
+        if (params != null && params.length > 0) {
+            for (int i = 0; i < params.length; i++) {
+                if (str.indexOf("{}") > 0) {
+                    if (params[i] == null) {
+                        params[i] = "";
+                    }
+                    str = str.substring(0, str.indexOf("{}")) + params[i].toString() + str.substring(str.indexOf("{}") + 2, str.length());
+                } else {
+                    break;
+                }
+            }
+        }
+        return str;
+    }
+
 }
