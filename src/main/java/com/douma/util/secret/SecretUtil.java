@@ -72,7 +72,8 @@ public class SecretUtil {
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.println(encrypt("123456"));
+        System.out.println(md5("haoxijun"));
+        System.out.println(md5("haoxijun123"));
     }
 
 }
