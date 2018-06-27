@@ -27,6 +27,15 @@ public class IdUtil {
     private static final int uuidForDateLong_standard = 18;
 
     /**
+     * java原生uuid
+     *
+     * @return
+     */
+    public static String uid() {
+        return UUID.randomUUID().toString();
+    }
+
+    /**
      * 当前时间13位+bit位字符 根据时间获取id 时间的long类型
      *
      * @param bit id的位数长度
@@ -84,7 +93,8 @@ public class IdUtil {
 //            set.add(id);
 //            System.out.println(id);
         }
-        System.out.println(set.size());
+//        System.out.println(set.size());
+        System.out.println(uid().toLowerCase());
     }
 
 }
