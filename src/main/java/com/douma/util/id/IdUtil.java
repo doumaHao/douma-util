@@ -93,7 +93,7 @@ public class IdUtil {
 //            set.add(id);
 //            System.out.println(id);
         }
-//        System.out.println(set.size());
+        System.out.println(set.size());
         System.out.println(uid().toLowerCase());
     }
 
