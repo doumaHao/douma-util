@@ -37,7 +37,7 @@ public class OSSClientUtil {
      */
     public static String upload(File file, String bucket) throws Exception {
         OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret);
-        String fileKey = new Date().getTime() + ".pdf";
+        String fileKey = System.currentTimeMillis() + ".pdf";
         InputStream inputStream = new FileInputStream(file);
         ossClient.putObject(bucket, fileKey, inputStream);
         ossClient.shutdown();
@@ -53,7 +53,7 @@ public class OSSClientUtil {
      */
     public static String url(String key, String bucket) {
         // 设置URL过期时间为10年  3600l* 1000*24*365*10
-        Date expiration = new Date(new Date().getTime() + 3600l * 1000 * 24 * 365 * 10);
+        Date expiration = new Date(System.currentTimeMillis() + 3600L * 1000 * 24 * 365 * 10);
         // 生成URL
         OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret);
         URL url = ossClient.generatePresignedUrl(bucket, key, expiration);
