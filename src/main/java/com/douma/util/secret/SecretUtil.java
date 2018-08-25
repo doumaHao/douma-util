@@ -51,6 +51,21 @@ public class SecretUtil {
     }
 
     /**
+     * 指定公钥解密
+     * @param encryptStr
+     * @param publicKey
+     * @return
+     */
+    public static String decrypt(String encryptStr, String publicKey) {
+        try {
+            return ConfigTools.decrypt(publicKey, encryptStr);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
      * MD5 加密
      *
      * @param content
@@ -72,8 +87,9 @@ public class SecretUtil {
     }
 
     public static void main(String[] args) throws Exception {
-//        System.out.println(md5("haoxijun"));
-//        System.out.println(md5("haoxijun123"));
+        String aaa = "dbj0AGrKNXeu8d1a3oSmS/vtQESnvgJti7J+CpDq6kxwmlJcKSlJk2c9SyWEAak3qY3mwEFmkIcsQpKlfodw6ePZorzd6nH2IGTY2vmVRiDRj/FAJz2wT/Okp19IvIj3THRAOBtM+sNHfcWOl6jgNVpoN79bsVrKb41HD0UApjI=";
+        System.out.println(decrypt(aaa));
+
     }
 
 }

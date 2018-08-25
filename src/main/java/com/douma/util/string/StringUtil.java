@@ -44,23 +44,24 @@ public class StringUtil {
      * @param params
      * @return
      */
-    public static String toString(String str, Object... params) {
+    public static String toString(final String str, final Object... params) {
+        String newString = str;
         if (isEmpty(str)) {
             return null;
         }
         if (params != null && params.length > 0) {
             for (int i = 0; i < params.length; i++) {
-                if (str.indexOf("{}") > 0) {
+                if (newString.indexOf("{}") > 0) {
                     if (params[i] == null) {
                         params[i] = "";
                     }
-                    str = str.substring(0, str.indexOf("{}")) + params[i].toString() + str.substring(str.indexOf("{}") + 2, str.length());
+                    newString = newString.substring(0, newString.indexOf("{}")) + params[i].toString() + newString.substring(newString.indexOf("{}") + 2, newString.length());
                 } else {
                     break;
                 }
             }
         }
-        return str;
+        return newString;
     }
 
 }
