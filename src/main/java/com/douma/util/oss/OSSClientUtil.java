@@ -23,8 +23,8 @@ public class OSSClientUtil {
     private static final Logger logger = LoggerFactory.getLogger(OSSClientUtil.class);
 
     private static final String endpoint = "https://oss-cn-hangzhou.aliyuncs.com";
-    private static final String accessKeyId = "LTAIUwCHHejtv6Qx";
-    private static final String accessKeySecret = "NbTj17bgAhF7hymSrdZzUkysvzYQ7x";
+    private static final String accessKeyId = "";
+    private static final String accessKeySecret = "";
     private static final String requestUrl = "https://haoxijun-demo2018.oss-cn-hangzhou.aliyuncs.com/";
 
     /**
